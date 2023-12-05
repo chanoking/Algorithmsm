@@ -12,8 +12,76 @@
 //     q.remove(); // returns 1
 //     q.remove(); // returns 2
 
-const Stack = require('./stack');
+const Stack = require("./stack");
 
-class Queue {}
+// class Queue {
+//   constructor() {
+//     this.data = [];
+//   }
+//   add(job) {
+//     this.data.unshift(job);
+//   }
+//   remove() {
+//     return this.data.pop();
+//   }
+//   peek() {
+//     return this.data[this.data.length - 1];
+//   }
+// }
 
+// class Queue{
+//     constructor(){
+//         this.StackA = new Stack();
+//         this.StackB = new Stack();
+//     }
+
+//     add(data){
+//         this.StackA.push(data)
+//     }
+//     remove(){
+//         return this.StackA.pop()
+//     }
+//     peek(){
+//         return this.StackA[this.StackA.length - 1];
+//     }
+//     push(data){
+//         this.StackB.push(data)
+//     }
+//     pop(){
+//         return this.StackB.pop()
+//     }
+
+// }
+
+class Queue {
+  constructor() {
+    this.first = new Stack();
+    this.second = new Stack();
+  }
+  add(record) {
+    this.first.push(record);
+  }
+  remove() {
+    while (this.first.peek()) {
+      this.second.push(this.first.pop());
+    }
+    const record = this.second.pop();
+
+    while (this.second.peek()) {
+      this.first.push(this.second.pop());
+    }
+    return record;
+  }
+  peek() {
+    while (this.first.peek()) {
+      this.second.push(this.first.pop());
+    }
+    const record = this.second.peek();
+
+    while (this.second.peek()) {
+      this.first.push(this.second.pop());
+    }
+    return record;
+  }
+}
 module.exports = Queue;
