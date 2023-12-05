@@ -218,7 +218,7 @@ describe("RemoveAt", () => {
   });
 });
 
-describe.skip("InsertAt", () => {
+describe("InsertAt", () => {
   test("inserts a new node with data at the 0 index when the list is empty", () => {
     const l = new List();
     l.insertAt("hi", 0);
@@ -273,7 +273,7 @@ describe.skip("InsertAt", () => {
   });
 });
 
-describe.skip("ForEach", () => {
+describe("ForEach", () => {
   test("applies a transform to each node", () => {
     const l = new List();
 
@@ -284,6 +284,7 @@ describe.skip("ForEach", () => {
 
     l.forEach((node) => {
       node.data += 10;
+      console.log(node.data);
     });
 
     expect(l.getAt(0).data).toEqual(11);
@@ -293,7 +294,7 @@ describe.skip("ForEach", () => {
   });
 });
 
-describe.skip("for...of loops", () => {
+describe("for...of loops", () => {
   test("works with the linked list", () => {
     const l = new List();
 
@@ -303,7 +304,10 @@ describe.skip("for...of loops", () => {
     l.insertLast(4);
 
     for (let node of l) {
+      console.log(node);
+      console.log(node.data);
       node.data += 10;
+
     }
 
     expect(l.getAt(0).data).toEqual(11);
