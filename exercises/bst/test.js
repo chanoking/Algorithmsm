@@ -17,15 +17,24 @@ test('Node can insert correctly', () => {
 
 test('Contains returns node with the same data', () => {
   const node = new Node(10);
+  console.log(node);
   node.insert(5);
+  console.log(node);
   node.insert(15);
+  console.log(node);
   node.insert(20);
+  console.log(node);
   node.insert(0);
+  console.log(node);
   node.insert(-5);
+  console.log(node);
   node.insert(3);
+  console.log(node);
 
   const three = node.left.left.right;
+  console.log(three);
   expect(node.contains(3)).toEqual(three);
+  console.log(node.contains(3));
 });
 
 test('Contains returns null if value not found', () => {
